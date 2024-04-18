@@ -52,7 +52,7 @@ try {
 
 // POST /api/login
 router.post("/login", async (req, res) => {
-	console.log("jwt = ",process.env.JWT_SECRET);
+	// console.log("jwt = ",process.env.JWT_SECRET);
 	const { email, password } = req.body;
 	
 	if (!email || !password)

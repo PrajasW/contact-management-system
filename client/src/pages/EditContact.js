@@ -89,7 +89,7 @@ const EditContact = () => {
                 name="name"
                 value={userDetails.name}
                 onChange={handleInputChange}
-                placeholder="John Doe"
+                placeholder=""
                 required
               />
             </div>
@@ -119,7 +119,7 @@ const EditContact = () => {
                 name="email"
                 value={userDetails.email}
                 onChange={handleInputChange}
-                placeholder="johndoe@example.com"
+                placeholder=""
                 required
               />
             </div>
@@ -134,7 +134,7 @@ const EditContact = () => {
                 name="phone"
                 value={userDetails.phone}
                 onChange={handleInputChange}
-                placeholder="+977 987654321"
+                placeholder=""
                 required
               />
             </div>

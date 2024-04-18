@@ -64,7 +64,7 @@ const AllContact = () => {
     const newSearchUser = contacts.filter((contact) =>
       contact.name.toLowerCase().includes(searchInput.toLowerCase())
     );
-    console.log(newSearchUser);
+    // console.log(newSearchUser);
     setContacts(newSearchUser);
   };
 
@@ -72,16 +72,19 @@ const AllContact = () => {
     <>
       <div>
         <h1>Your Contacts</h1>
-        <a href="/mycontacts" className="btn btn-danger my-2">
-          Reload Contact
-        </a>
         <hr className="my-4" />
         {loading ? (
           <Spinner splash="Loading Contacts..." />
         ) : (
           <>
             {contacts.length == 0 ? (
-              <h3>No contacts created yet</h3>
+              <h3>
+                No Contacts Found{" "}
+                < hr className = "my-4" / >
+                <Link to="/create" className="btn btn-info">
+                  Create Contact
+                </Link>
+              </h3>
             ) : (
               <>
                 <form className="d-flex" onSubmit={handleSearchSubmit}>
