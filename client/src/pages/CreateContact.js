@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import ToastContext from "../context/ToastContext";
 
 const CreateContact = () => {
   const { user } = useContext(AuthContext);
-  const { toast } = useContext(ToastContext);
 
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -34,11 +32,12 @@ const CreateContact = () => {
     });
     const result = await res.json();
     if (!result.error) {
-      toast.success(`Created [${userDetails.name}] contact`);
-
-      setUserDetails({ name: "", address: "", email: "", phone: "" });
+      // toast.success(`Created [${userDetails.name}] contact`);
+      // redirect to mycontacts page.
+      navigate("/mycontacts");
+      // setUserDetails({ name: "", address: "", email: "", phone: "" });
     } else {
-      toast.error(result.error);
+      // toast.error(result.error);
     }
   };
 

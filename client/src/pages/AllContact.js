@@ -2,11 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Spinner from "../components/Spinner";
-import ToastContext from "../context/ToastContext";
 
 const AllContact = () => {
-  const { toast } = useContext(ToastContext);
-
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
   const [modalData, setModalData] = useState({});
@@ -47,10 +44,8 @@ const AllContact = () => {
         const result = await res.json();
         if (!result.error) {
           setContacts(result.myContacts);
-          toast.success("Deleted contact");
           setShowModal(false);
         } else {
-          toast.error(result.error);
         }
       } catch (err) {
         console.log(err);
@@ -64,7 +59,6 @@ const AllContact = () => {
     const newSearchUser = contacts.filter((contact) =>
       contact.name.toLowerCase().includes(searchInput.toLowerCase())
     );
-    // console.log(newSearchUser);
     setContacts(newSearchUser);
   };
 

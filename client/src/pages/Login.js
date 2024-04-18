@@ -2,10 +2,8 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import AuthContext from "../context/AuthContext";
-import ToastContext from "../context/ToastContext";
 
 const Login = () => {
-  const { toast } = useContext(ToastContext);
   const { loginUser } = useContext(AuthContext);
 
   const [credentials, setCredentials] = useState({
@@ -23,7 +21,6 @@ const Login = () => {
     event.preventDefault();
 
     if (!credentials.email || !credentials.password) {
-      toast.error("please enter all the required fields!");
       return;
     }
 

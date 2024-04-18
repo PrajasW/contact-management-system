@@ -1,13 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ToastContext from "./ToastContext";
-
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const { toast } = useContext(ToastContext);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -18,7 +13,6 @@ export const AuthContextProvider = ({ children }) => {
     checkUserLoggedIn();
   }, []);
 
-  // check if the user is logged in.
   const checkUserLoggedIn = async () => {
     try {
       const res = await fetch(`http://localhost:8000/api/me`, {
@@ -62,11 +56,8 @@ export const AuthContextProvider = ({ children }) => {
       if (!result.error) {
         localStorage.setItem("token", result.token);
         setUser(result.user);
-        toast.success(`Logged in ${result.user.name}`);
-
         navigate("/", { replace: true });
       } else {
-        toast.error(result.error);
       }
     } catch (err) {
       console.log(err);
@@ -86,10 +77,8 @@ export const AuthContextProvider = ({ children }) => {
       const result = await res.json();
 
       if (!result.error) {
-        toast.success("user registered successfully! login into your account!");
         navigate("/login", { replace: true });
       } else {
-        toast.error(result.error);
       }
     } catch (err) {
       console.log(err);

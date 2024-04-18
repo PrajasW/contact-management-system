@@ -2,15 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import AuthContext from "../context/AuthContext";
-import ToastContext from "../context/ToastContext";
 
 const EditContact = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
   const { user } = useContext(AuthContext);
-  const { toast } = useContext(ToastContext);
-
   const [userDetails, setUserDetails] = useState({
     name: "",
     address: "",
@@ -38,12 +35,12 @@ const EditContact = () => {
     });
     const result = await res.json();
     if (!result.error) {
-      toast.success(`updated [${userDetails.name}] contact`);
+      // toast.success(`updated [${userDetails.name}] contact`);
 
       setUserDetails({ name: "", address: "", email: "", phone: "" });
       navigate("/mycontacts");
     } else {
-      toast.error(result.error);
+      // toast.error(result.error);
     }
   };
 

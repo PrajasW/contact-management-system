@@ -2,10 +2,10 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
 import AuthContext from "../context/AuthContext";
-import ToastContext from "../context/ToastContext";
+// import ToastContext from "../context/ToastContext";
 
 const Register = () => {
-  const { toast } = useContext(ToastContext);
+  // const { toast } = useContext(ToastContext);
   const { registerUser } = useContext(AuthContext);
 
   const [credentials, setCredentials] = useState({
@@ -29,12 +29,12 @@ const Register = () => {
       !credentials.password ||
       !credentials.confirmPassword
     ) {
-      toast.error("please enter all the required fields!");
+      // toast.error("please enter all the required fields!");
       return;
     }
 
     if (credentials.password !== credentials.confirmPassword) {
-      toast.error("password do not match!");
+      // toast.error("password do not match!");
       return;
     }
 
