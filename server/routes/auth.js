@@ -95,8 +95,15 @@ try {
 	}
 });
 
+// router.get("/me", auth, async (req, res) => {
+//   	return res.status(200).json({ ...req.user._doc });
+// });
+
 router.get("/me", auth, async (req, res) => {
-  	return res.status(200).json({ ...req.user._doc });
+    if (!req.user) {
+        return res.status(404).json({ error: "User not found" });
+    }
+    return res.status(200).json({ ...req.user._doc });
 });
 
 module.exports = router;
